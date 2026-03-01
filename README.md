@@ -5,7 +5,7 @@ Scaffold a new Next.js 16 app prewired for Based CMS.
 ## Usage
 
 ```bash
-npx create-based-app my-app
+npx @based-cms/get-started my-app
 ```
 
 ## What it scaffolds
