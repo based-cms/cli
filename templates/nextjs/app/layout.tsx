@@ -27,7 +27,6 @@ export default async function RootLayout({
         <Providers
           slug={slug}
           convexUrl={parsed.convexUrl}
-          env={parsed.env === 'live' ? 'production' : 'preview'}
         >
           {children}
         </Providers>

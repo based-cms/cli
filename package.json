@@ -1,25 +1,43 @@
 {
-  "name": "create-based-app",
+  "name": "create-basedcms-app",
   "version": "0.1.0",
   "description": "Scaffold a new Based CMS client project",
   "license": "MIT",
+  "author": "Based CMS",
   "repository": {
     "type": "git",
     "url": "https://github.com/based-cms/cli.git"
   },
   "homepage": "https://based-cms.dev",
+  "bugs": {
+    "url": "https://github.com/based-cms/cli/issues"
+  },
+  "keywords": [
+    "based-cms",
+    "cms",
+    "scaffold",
+    "cli",
+    "nextjs",
+    "create-app"
+  ],
   "bin": {
     "create-based-app": "./dist/index.js"
   },
   "files": [
     "dist",
-    "templates"
+    "templates",
+    "README.md",
+    "LICENSE"
   ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
     "type-check": "tsc --noEmit",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prepublishOnly": "pnpm build"
   },
   "dependencies": {
     "picocolors": "^1.1.1",

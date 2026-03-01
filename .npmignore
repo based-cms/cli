@@ -1,0 +1,38 @@
+# Source files
+src/
+tsconfig*.json
+tsup.config.ts
+
+# Development files
+.github/
+*.log
+*.lock
+pnpm-lock.yaml
+
+# Testing
+test/
+tests/
+*.test.ts
+*.spec.ts
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentation (optional, remove if you want to include)
+# README.md
+
+# Other
+node_modules/
