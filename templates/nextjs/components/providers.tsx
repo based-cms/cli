@@ -1,6 +1,6 @@
 'use client'
 
-import { CMSProvider } from 'cms-client/react'
+import { CMSProvider } from '@based-cms/client/react'
 
 export function Providers({
   slug,

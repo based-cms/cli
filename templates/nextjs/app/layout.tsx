@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { parseKey } from 'cms-client'
+import { parseKey } from '@based-cms/client'
 import { cms } from '@/lib/cms'
 import { heroSection, teamSection } from '@/lib/sections'
 import { Providers } from '@/components/providers'

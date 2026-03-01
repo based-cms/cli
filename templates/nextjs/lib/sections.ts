@@ -1,4 +1,4 @@
-import { defineCMSSection, z } from 'cms-client'
+import { defineCMSSection, z } from '@based-cms/client'
 
 export const heroSection = defineCMSSection({
   name: 'hero',

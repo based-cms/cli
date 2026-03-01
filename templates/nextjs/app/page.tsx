@@ -1,6 +1,6 @@
 'use client'
 
-import { useSection } from 'cms-client/react'
+import { useSection } from '@based-cms/client/react'
 import { heroSection, teamSection } from '@/lib/sections'
 
 export default function Home() {
