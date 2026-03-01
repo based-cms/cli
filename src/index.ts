@@ -27,7 +27,7 @@ function isValidUrl(value: string): boolean {
 
 async function main() {
   console.log()
-  console.log(`  ${pc.bold(pc.cyan('create-based-cms'))} — scaffold a Based CMS client project`)
+  console.log(`  ${pc.bold(pc.cyan('create-based-app'))} — scaffold a Based CMS client project`)
   console.log()
 
   // Parse CLI args
@@ -142,7 +142,7 @@ async function main() {
       type: 'text',
       name: 'cmsUrl',
       message: 'CMS dashboard URL:',
-      initial: 'https://cms.your-domain.com',
+      initial: 'https://based-cms.dev',
       validate: (v: string) => (isValidUrl(v) ? true : 'Enter a valid URL'),
     })
 
@@ -212,7 +212,7 @@ async function main() {
 
   // --local: rewrite cms-client dependency to file: path
   if (localMode) {
-    const cmsClientDir = path.join(__dirname, '..', '..', 'cms-client')
+    const cmsClientDir = path.join(__dirname, '..', '..', 'based-cms-client')
     const pkgJsonPath = path.join(targetDir, 'package.json')
     const pkgJson = JSON.parse(fs.readFileSync(pkgJsonPath, 'utf-8')) as {
       dependencies: Record<string, string>

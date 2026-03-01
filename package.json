@@ -1,9 +1,15 @@
 {
-  "name": "create-based-cms",
+  "name": "create-based-app",
   "version": "0.1.0",
   "description": "Scaffold a new Based CMS client project",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/based-cms/cli.git"
+  },
+  "homepage": "https://based-cms.dev",
   "bin": {
-    "create-based-cms": "./dist/index.js"
+    "create-based-app": "./dist/index.js"
   },
   "files": [
     "dist",
@@ -20,7 +26,6 @@
     "prompts": "^2.4.2"
   },
   "devDependencies": {
-    "@based-cms/tsconfig": "workspace:*",
     "@types/prompts": "^2.4.9",
     "tsup": "^8.5.0",
     "typescript": "^5.9.3"
