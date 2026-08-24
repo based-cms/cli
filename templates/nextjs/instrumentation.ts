@@ -8,7 +8,7 @@ export async function register() {
   // CMS client needs, and register() is invoked once per runtime.
   if (process.env.NEXT_RUNTIME !== 'nodejs') return
 
-  const [{ getCMS }, { heroSection, teamSection }] = await Promise.all([
+  const [{ getCMS }, { heroSection, teamSection, blogSection }] = await Promise.all([
     import('./lib/cms'),
     import('./lib/sections'),
   ])
@@ -22,7 +22,7 @@ export async function register() {
   }
 
   try {
-    await cms.registerSections([heroSection, teamSection])
+    await cms.registerSections([heroSection, teamSection, blogSection])
   } catch (err) {
     // Registration failing (bad key, network) should not take the app down
     console.error('[cms] Failed to register sections:', err)
