@@ -1,0 +1,9 @@
+# pnpm-only (npm/yarn ignore this file): approve the build scripts of
+# esbuild (via convex) and sharp (via next) so `pnpm install` exits cleanly
+# instead of failing with ERR_PNPM_IGNORED_BUILDS.
+allowBuilds:
+  esbuild: true
+  sharp: true
+onlyBuiltDependencies:
+  - esbuild
+  - sharp

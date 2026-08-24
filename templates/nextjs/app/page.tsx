@@ -84,7 +84,6 @@ export default function Home() {
                   }}
                 >
                   {member.image && (
-                    // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={member.image}
                       alt={member.name}

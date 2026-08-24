@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
-import { parseKey } from '@based-cms/client'
-import { cms } from '@/lib/cms'
-import { heroSection, teamSection } from '@/lib/sections'
+import { keyEnvToContentEnv, parseKey } from '@based-cms/client'
 import { Providers } from '@/components/providers'
+import { SetupRequired } from '@/components/setup-required'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -10,26 +9,46 @@ export const metadata: Metadata = {
   description: 'Powered by Based CMS',
 }
 
-const slug = process.env['BASED-CMS-SLUG']!
-const parsed = parseKey(process.env['BASED-CMS-KEY']!)
-
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  // Register sections on every server boot — idempotent
-  await cms.registerSections([heroSection, teamSection])
+  const slug = process.env.BASED_CMS_SLUG
+  const key = process.env.BASED_CMS_KEY
+
+  // Resolve the Convex URL and content env from the key. If the env isn't
+  // configured (or the key is malformed), render a friendly setup page
+  // instead of crashing.
+  let convexUrl: string | null = null
+  let env: 'production' | 'test' = 'production'
+  let keyInvalid = false
+  if (key) {
+    try {
+      const parsed = parseKey(key)
+      convexUrl = parsed.convexUrl
+      // bcms_test-* keys read test content, bcms_live-* production — the
+      // browser must query the same env the server does
+      env = keyEnvToContentEnv(parsed.env)
+    } catch {
+      keyInvalid = true
+    }
+  }
 
   return (
     <html lang="en">
       <body>
-        <Providers
-          slug={slug}
-          convexUrl={parsed.convexUrl}
-        >
-          {children}
-        </Providers>
+        {slug && convexUrl ? (
+          <Providers slug={slug} convexUrl={convexUrl} env={env}>
+            {children}
+          </Providers>
+        ) : (
+          <SetupRequired
+            hasSlug={Boolean(slug)}
+            hasKey={Boolean(key)}
+            keyInvalid={keyInvalid}
+          />
+        )}
       </body>
     </html>
   )
